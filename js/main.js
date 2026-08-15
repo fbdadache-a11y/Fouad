@@ -29,6 +29,17 @@ const ICONS = {
 };
 
 /* ════════════════════════════════════════
+   ICON KEY HELPER
+   data.js uses kebab-case icon keys (e.g. "trending-up") for readability;
+   ICONS above is keyed camelCase. Normalize before lookup.
+════════════════════════════════════════ */
+function getIcon(key) {
+  if (!key) return '';
+  const camel = key.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  return ICONS[camel] || ICONS[key] || '';
+}
+
+/* ════════════════════════════════════════
    STATE
 ════════════════════════════════════════ */
 const RTL_LANGS = ['ar'];
@@ -85,7 +96,7 @@ function render() {
   const statsEl = document.getElementById('about-stats');
   statsEl.innerHTML = t.about.stats.map(s => `
     <div class="stat-card reveal">
-      <div class="stat-icon">${ICONS[s.icon] || ''}</div>
+      <div class="stat-icon">${getIcon(s.icon)}</div>
       <span class="stat-value">${s.value}</span>
       <span class="stat-label">${s.label}</span>
     </div>`).join('');
@@ -134,7 +145,7 @@ function render() {
   document.getElementById('skills-grid').innerHTML = t.skills.cats.map(c => `
     <div class="skill-card reveal">
       <div class="skill-card-header">
-        <div class="skill-icon">${ICONS[c.icon] || ''}</div>
+        <div class="skill-icon">${getIcon(c.icon)}</div>
         <h3 class="skill-name">${c.name}</h3>
       </div>
       <ul class="skill-items">
