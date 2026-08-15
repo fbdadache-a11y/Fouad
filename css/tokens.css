@@ -1,22 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Amiri:ital@0;1&display=swap');
 
 :root {
-  /* ── Colors ── */
-  --color-slate-dark:   #141413;
-  --color-ivory-medium: #f0eee6;
-  --color-ivory-light:  #faf9f5;
-  --color-cloud-medium: #b0aea5;
-  --color-cloud-dark:   #87867f;
-  --color-stone:        #cccbc8;
-  --color-slate-medium: #3d3d3a;
-  --color-oat-warm:     #e3dacc;
-  --color-manilla:      #f5e3c7;
-  --color-clay:         #d97757;
-  --color-clay-deep:    #c6613f;
+  /* ── Colors (linen palette) ── */
+  --pitch-black:    #191511;
+  --soft-linen:     #f1eae0;
+  --linen:          #f7eae0;
+  --soft-linen-2:   #efeae2;
+  --khaki-beige:    #bbab9c;
+
+  /* Derived tones — same family, different depth, so every surface still
+     reads as "linen" rather than reaching for an unrelated gray scale. */
+  --ink-soft:       #3a352e;   /* secondary text on light surfaces */
+  --ink-faint:      #6b6459;   /* tertiary text / muted labels */
+  --linen-deep:     #e4d9c9;   /* darker linen — hover/active surfaces */
+  --linen-line:     #d8cbb8;   /* hairlines & borders on light surfaces */
+  --pitch-soft:     #2a251f;   /* dark surface, one step off pure black */
+  --pitch-line:     #423c33;   /* hairlines & borders on dark surfaces */
+  --khaki-on-linen: #736555;   /* khaki-beige darkened for AA text contrast on light surfaces — khaki-beige itself is decorative/dark-surface only */
+
+  /* Accent — a quiet oxblood, used the way the palette's warmth suggests:
+     sparingly, for the one or two things that must draw the eye. */
+  --accent:         #8a4433;
+  --accent-deep:    #723627;
+  --accent-soft:    #e8cfc3;   /* accent tint for subtle fills */
+
+  /* ── Semantic aliases (keep existing component code working) ── */
+  --color-slate-dark:   var(--pitch-black);
+  --color-ivory-medium: var(--soft-linen);
+  --color-ivory-light:  var(--linen);
+  --color-cloud-medium: var(--khaki-beige);
+  --color-cloud-dark:   var(--ink-faint);
+  --color-stone:        var(--linen-line);
+  --color-slate-medium: var(--pitch-soft);
+  --color-oat-warm:     var(--linen-deep);
+  --color-manilla:      var(--soft-linen-2);
+  --color-clay:         var(--accent);
+  --color-clay-deep:    var(--accent-deep);
 
   /* ── Typography ── */
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  /* Arabic pairing: Amiri (serif, echoes Lora's role) + Noto Kufi Arabic (sans, echoes Inter's role) */
+  --font-serif-ar: 'Amiri', 'Noto Kufi Arabic', Tahoma, serif;
+  --font-sans-ar:  'Noto Kufi Arabic', Tahoma, sans-serif;
 
   /* ── Scale ── */
   --text-caption:    12px;
@@ -50,31 +76,96 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-ivory-medium);
-  color: var(--color-slate-dark);
+  background: var(--soft-linen);
+  color: var(--pitch-black);
   font-family: var(--font-serif);
   font-size: var(--text-body);
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: var(--color-clay); color: #fff; }
+::selection { background: var(--accent); color: var(--linen); }
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--color-ivory-medium); }
-::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--soft-linen); }
+::-webkit-scrollbar-thumb { background: var(--khaki-beige); border-radius: 3px; }
 
 .skip-link {
   position: absolute; top: -100%; left: var(--sp-16);
-  background: var(--color-ivory-light); color: var(--color-slate-dark);
+  background: var(--linen); color: var(--pitch-black);
   font-family: var(--font-sans); font-size: var(--text-caption);
   padding: var(--sp-8) var(--sp-16); z-index: 9999; transition: top .2s;
 }
 .skip-link:focus { top: var(--sp-16); }
+
+/* ══════════════════════════════════════
+   FOCUS VISIBILITY
+   One consistent ring, keyed to the accent, for every interactive element.
+══════════════════════════════════════ */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ══════════════════════════════════════
+   RTL (Arabic) SUPPORT
+   Swaps font families site-wide; layout.css handles
+   direction-aware spacing/alignment overrides.
+══════════════════════════════════════ */
+html[dir="rtl"] body { font-family: var(--font-serif-ar); }
+html[dir="rtl"] .nav-logo,
+html[dir="rtl"] .drawer-logo,
+html[dir="rtl"] .footer-logo,
+html[dir="rtl"] .nav-link,
+html[dir="rtl"] .drawer-link,
+html[dir="rtl"] .lang-toggle,
+html[dir="rtl"] .welcome-lang,
+html[dir="rtl"] .welcome-name,
+html[dir="rtl"] .welcome-sub,
+html[dir="rtl"] .welcome-btn,
+html[dir="rtl"] .hero-badge,
+html[dir="rtl"] .hero-headline,
+html[dir="rtl"] .hero-meta,
+html[dir="rtl"] .btn-clay,
+html[dir="rtl"] .btn-outlined,
+html[dir="rtl"] .scroll-hint,
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .stat-value,
+html[dir="rtl"] .stat-label,
+html[dir="rtl"] .edu-period,
+html[dir="rtl"] .edu-location,
+html[dir="rtl"] .edu-inst,
+html[dir="rtl"] .exp-role,
+html[dir="rtl"] .exp-meta-item,
+html[dir="rtl"] .skill-name,
+html[dir="rtl"] .skill-item,
+html[dir="rtl"] .lang-name,
+html[dir="rtl"] .lang-level,
+html[dir="rtl"] .contact-card-label,
+html[dir="rtl"] .contact-info-item,
+html[dir="rtl"] .footer-tagline,
+html[dir="rtl"] .footer-copy,
+html[dir="rtl"] .drawer-lang-label,
+html[dir="rtl"] .drawer-lang-btn {
+  font-family: var(--font-sans-ar);
+}
+html[dir="rtl"] .welcome-title,
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .about-bio,
+html[dir="rtl"] .contact-title,
+html[dir="rtl"] .contact-sub,
+html[dir="rtl"] .edu-degree,
+html[dir="rtl"] .exp-org,
+html[dir="rtl"] .exp-bullet {
+  font-family: var(--font-serif-ar);
 }

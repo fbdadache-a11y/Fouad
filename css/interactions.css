@@ -44,7 +44,7 @@ body.has-cursor #cursor-ring {
 #cursor-ring.hover {
   width: 52px; height: 52px;
   border-color: var(--color-clay);
-  background: rgba(217, 119, 87, .08);
+  background: rgba(138,68,51,.08);
 }
 #cursor-dot.hover { opacity: 0; }
 
@@ -128,13 +128,13 @@ body.has-cursor #cursor-ring {
 .stat-card::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(217,119,87,.08), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(138,68,51,.08), transparent 70%);
   opacity: 0; transition: opacity .35s;
   pointer-events: none;
 }
 .stat-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px -12px rgba(20,20,19,.15);
+  box-shadow: 0 16px 40px -12px rgba(25,21,17,.15);
 }
 .stat-card:hover::before { opacity: 1; }
 .stat-card:hover .stat-icon {
@@ -150,7 +150,7 @@ body.has-cursor #cursor-ring {
 }
 .skill-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px -12px rgba(20,20,19,.15);
+  box-shadow: 0 16px 40px -12px rgba(25,21,17,.15);
 }
 .skill-card:hover .skill-icon {
   background: var(--color-clay);
@@ -171,7 +171,7 @@ body.has-cursor #cursor-ring {
 }
 .exp-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 48px -16px rgba(20,20,19,.18);
+  box-shadow: 0 20px 48px -16px rgba(25,21,17,.18);
 }
 .exp-icon { transition: background .3s, transform .3s cubic-bezier(.34,1.56,.64,1); }
 .exp-card:hover .exp-icon {
@@ -248,7 +248,7 @@ body.has-cursor #cursor-ring {
 }
 .btn-outlined:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -8px rgba(20,20,19,.2);
+  box-shadow: 0 8px 20px -8px rgba(25,21,17,.2);
 }
 
 /* ══════════════════════════════════════
@@ -311,7 +311,7 @@ body.has-cursor #cursor-ring {
   background: var(--color-clay);
   border-radius: 50%;
   transform: translate(50%, -50%);
-  box-shadow: 0 0 8px 2px rgba(217,119,87,.5);
+  box-shadow: 0 0 8px 2px rgba(138,68,51,.5);
 }
 
 /* ══════════════════════════════════════
