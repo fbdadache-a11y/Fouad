@@ -3,6 +3,7 @@
 ════════════════════════════════════════ */
 const ICONS = {
   arrowRight:   `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`,
+  externalLink: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
   menu:         `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
   close:        `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
   chevDown:     `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`,
@@ -29,48 +30,24 @@ const ICONS = {
 };
 
 /* ════════════════════════════════════════
-   ICON KEY HELPER
-   data.js uses kebab-case icon keys (e.g. "trending-up") for readability;
-   ICONS above is keyed camelCase. Normalize before lookup.
-════════════════════════════════════════ */
-function getIcon(key) {
-  if (!key) return '';
-  const camel = key.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-  return ICONS[camel] || ICONS[key] || '';
-}
-
-/* ════════════════════════════════════════
    STATE
 ════════════════════════════════════════ */
-const RTL_LANGS = ['ar'];
-let lang = (() => {
-  try {
-    const saved = localStorage.getItem('fd-lang');
-    if (saved && DATA[saved]) return saved;
-  } catch (e) { /* localStorage unavailable — fall back silently */ }
-  return 'en';
-})();
+let lang = 'en';
 
 /* ════════════════════════════════════════
    RENDER
 ════════════════════════════════════════ */
 function render() {
   const t  = DATA[lang];
-  const p  = { ...DATA.personal, ...(DATA.personalByLang[lang] || {}) };
-
-  /* ── DOCUMENT DIRECTION / LANGUAGE ── */
-  const isRTL = RTL_LANGS.includes(lang);
-  document.documentElement.lang = lang;
-  document.documentElement.dir  = isRTL ? 'rtl' : 'ltr';
+  const p  = DATA.personal;
 
   /* ── WELCOME ── */
-  document.getElementById('welcome-name').textContent      = p.short;
   document.getElementById('welcome-greeting').textContent = t.welcome.greeting;
   document.getElementById('welcome-sub').textContent      = t.welcome.sub;
   document.getElementById('welcome-cta').innerHTML        = `${t.welcome.cta} ${ICONS.arrowRight}`;
 
   /* ── NAV ── */
-  ['about','experience','skills','contact'].forEach(id => {
+  ['about','experience','projects','skills','contact'].forEach(id => {
     const el = document.getElementById(`nav-${id}`);
     if (el) el.textContent = t.nav[id];
     const del = document.getElementById(`dnav-${id}`);
@@ -84,7 +61,11 @@ function render() {
   document.getElementById('hero-scroll-label').textContent = t.hero.scroll;
   document.getElementById('btn-email-hero').innerHTML    = `${ICONS.mailMd} ${t.contact.emailLbl}`;
   document.getElementById('btn-li-hero').innerHTML       = `${ICONS.linkedin} LinkedIn`;
-  document.getElementById('hero-location').textContent    = p.location;
+
+  const cvHero = document.getElementById('btn-cv-hero');
+  cvHero.href = t.contact.cvFile;
+  cvHero.setAttribute('download', t.contact.cvFile.split('/').pop());
+  document.getElementById('btn-cv-hero-label').textContent = t.contact.cvLbl;
 
   /* ── ABOUT ── */
   document.getElementById('about-label').textContent   = t.about.label;
@@ -96,7 +77,7 @@ function render() {
   const statsEl = document.getElementById('about-stats');
   statsEl.innerHTML = t.about.stats.map(s => `
     <div class="stat-card reveal">
-      <div class="stat-icon">${getIcon(s.icon)}</div>
+      <div class="stat-icon">${ICONS[s.icon] || ''}</div>
       <span class="stat-value">${s.value}</span>
       <span class="stat-label">${s.label}</span>
     </div>`).join('');
@@ -139,13 +120,40 @@ function render() {
       </ul>
     </article>`).join('');
 
+  /* ── PROJECTS ── */
+  document.getElementById('projects-label').textContent = t.projects.label;
+  document.getElementById('projects-title').textContent = t.projects.title;
+  document.getElementById('projects-grid').innerHTML = t.projects.items.map(p => `
+    <a class="project-card reveal" href="${p.url}" target="_blank" rel="noopener noreferrer" data-cursor="view" aria-label="${p.cta}: ${p.name}">
+      <div class="project-thumb">
+        <div class="project-thumb-placeholder">
+          <span>${p.name}</span>
+          <span>assets/econovo-preview.jpg</span>
+        </div>
+        <div class="project-thumb-overlay">
+          <span class="project-visit">${ICONS.externalLink} ${p.cta}</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-top">
+          <div>
+            <h3 class="project-name">${p.name}</h3>
+            <span class="project-tag">${p.tag}</span>
+          </div>
+          <span class="project-arrow" aria-hidden="true">${ICONS.externalLink}</span>
+        </div>
+        <p class="project-desc">${p.desc}</p>
+        <span class="project-url">${p.urlLabel}</span>
+      </div>
+    </a>`).join('');
+
   /* ── SKILLS ── */
   document.getElementById('skills-label').textContent = t.skills.label;
   document.getElementById('skills-title').textContent = t.skills.title;
   document.getElementById('skills-grid').innerHTML = t.skills.cats.map(c => `
     <div class="skill-card reveal">
       <div class="skill-card-header">
-        <div class="skill-icon">${getIcon(c.icon)}</div>
+        <div class="skill-icon">${ICONS[c.icon] || ''}</div>
         <h3 class="skill-name">${c.name}</h3>
       </div>
       <ul class="skill-items">
@@ -172,7 +180,12 @@ function render() {
   document.getElementById('contact-sub').textContent   = t.contact.sub;
   document.getElementById('contact-email-label').textContent = t.contact.emailLbl;
   document.getElementById('contact-li-label').textContent    = t.contact.liLbl;
-  document.getElementById('contact-location').textContent    = p.location;
+
+  const cvCard = document.getElementById('contact-cv-card');
+  cvCard.href = t.contact.cvFile;
+  cvCard.setAttribute('download', t.contact.cvFile.split('/').pop());
+  document.getElementById('contact-cv-label').textContent = t.contact.cvLbl;
+  document.getElementById('contact-cv-value').textContent = t.contact.cvValue;
 
   /* ── FOOTER ── */
   document.getElementById('footer-built').textContent  = t.footer.built;
@@ -187,9 +200,7 @@ function render() {
    LANG SWITCH
 ════════════════════════════════════════ */
 function setLang(l) {
-  if (!DATA[l]) return;
   lang = l;
-  try { localStorage.setItem('fd-lang', l); } catch (e) { /* ignore */ }
   // Sync all lang buttons
   document.querySelectorAll('[data-lang]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === l);
@@ -214,7 +225,7 @@ function enterSite() {
 /* ════════════════════════════════════════
    NAVBAR SCROLL + ACTIVE SECTION
 ════════════════════════════════════════ */
-const SECTIONS = ['about','experience','skills','contact'];
+const SECTIONS = ['about','experience','projects','skills','contact'];
 
 function updateNav() {
   const navbar = document.getElementById('navbar');
@@ -289,10 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Prevent scroll while welcome is showing */
   document.body.style.overflow = 'hidden';
 
-  /* Sync lang buttons to restored language, then render */
-  document.querySelectorAll('[data-lang]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
+  /* Initial render */
   render();
 
   /* Welcome CTA */
