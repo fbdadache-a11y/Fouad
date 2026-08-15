@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Colors ── */
+  --color-slate-dark:   #141413;
+  --color-ivory-medium: #f0eee6;
+  --color-ivory-light:  #faf9f5;
+  --color-cloud-medium: #b0aea5;
+  --color-cloud-dark:   #87867f;
+  --color-stone:        #cccbc8;
+  --color-slate-medium: #3d3d3a;
+  --color-oat-warm:     #e3dacc;
+  --color-manilla:      #f5e3c7;
+  --color-clay:         #d97757;
+  --color-clay-deep:    #c6613f;
+
+  /* ── Typography ── */
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Scale ── */
+  --text-caption:    12px;
+  --text-body-sm:    16px;
+  --text-body:       20px;
+  --text-subheading: 24px;
+  --text-heading:    61px;
+  --text-display:    68px;
+
+  /* ── Spacing ── */
+  --sp-4:   4px;
+  --sp-8:   8px;
+  --sp-12:  12px;
+  --sp-16:  16px;
+  --sp-24:  24px;
+  --sp-32:  32px;
+  --sp-76:  76px;
+  --sp-100: 100px;
+
+  /* ── Layout ── */
+  --max-w: 1280px;
+
+  /* ── Radius ── */
+  --r-card:     24px;
+  --r-btn:      8px;
+  --r-outlined: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-ivory-medium);
+  color: var(--color-slate-dark);
+  font-family: var(--font-serif);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-clay); color: #fff; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-ivory-medium); }
+::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 3px; }
+
+.skip-link {
+  position: absolute; top: -100%; left: var(--sp-16);
+  background: var(--color-ivory-light); color: var(--color-slate-dark);
+  font-family: var(--font-sans); font-size: var(--text-caption);
+  padding: var(--sp-8) var(--sp-16); z-index: 9999; transition: top .2s;
+}
+.skip-link:focus { top: var(--sp-16); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
