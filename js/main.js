@@ -31,16 +31,29 @@ const ICONS = {
 /* ════════════════════════════════════════
    STATE
 ════════════════════════════════════════ */
-let lang = 'en';
+const RTL_LANGS = ['ar'];
+let lang = (() => {
+  try {
+    const saved = localStorage.getItem('fd-lang');
+    if (saved && DATA[saved]) return saved;
+  } catch (e) { /* localStorage unavailable — fall back silently */ }
+  return 'en';
+})();
 
 /* ════════════════════════════════════════
    RENDER
 ════════════════════════════════════════ */
 function render() {
   const t  = DATA[lang];
-  const p  = DATA.personal;
+  const p  = { ...DATA.personal, ...(DATA.personalByLang[lang] || {}) };
+
+  /* ── DOCUMENT DIRECTION / LANGUAGE ── */
+  const isRTL = RTL_LANGS.includes(lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir  = isRTL ? 'rtl' : 'ltr';
 
   /* ── WELCOME ── */
+  document.getElementById('welcome-name').textContent      = p.short;
   document.getElementById('welcome-greeting').textContent = t.welcome.greeting;
   document.getElementById('welcome-sub').textContent      = t.welcome.sub;
   document.getElementById('welcome-cta').innerHTML        = `${t.welcome.cta} ${ICONS.arrowRight}`;
@@ -60,6 +73,7 @@ function render() {
   document.getElementById('hero-scroll-label').textContent = t.hero.scroll;
   document.getElementById('btn-email-hero').innerHTML    = `${ICONS.mailMd} ${t.contact.emailLbl}`;
   document.getElementById('btn-li-hero').innerHTML       = `${ICONS.linkedin} LinkedIn`;
+  document.getElementById('hero-location').textContent    = p.location;
 
   /* ── ABOUT ── */
   document.getElementById('about-label').textContent   = t.about.label;
@@ -147,6 +161,7 @@ function render() {
   document.getElementById('contact-sub').textContent   = t.contact.sub;
   document.getElementById('contact-email-label').textContent = t.contact.emailLbl;
   document.getElementById('contact-li-label').textContent    = t.contact.liLbl;
+  document.getElementById('contact-location').textContent    = p.location;
 
   /* ── FOOTER ── */
   document.getElementById('footer-built').textContent  = t.footer.built;
@@ -161,7 +176,9 @@ function render() {
    LANG SWITCH
 ════════════════════════════════════════ */
 function setLang(l) {
+  if (!DATA[l]) return;
   lang = l;
+  try { localStorage.setItem('fd-lang', l); } catch (e) { /* ignore */ }
   // Sync all lang buttons
   document.querySelectorAll('[data-lang]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === l);
@@ -261,7 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Prevent scroll while welcome is showing */
   document.body.style.overflow = 'hidden';
 
-  /* Initial render */
+  /* Sync lang buttons to restored language, then render */
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
   render();
 
   /* Welcome CTA */
