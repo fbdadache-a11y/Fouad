@@ -430,3 +430,34 @@ footer {
   .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--sp-8); }
   .welcome-lang { top: 20px; right: 20px; }
 }
+
+/* ══════════════════════════════════════
+   RTL (Arabic) LAYOUT
+   Mirrors positioning/alignment; fonts handled in tokens.css.
+══════════════════════════════════════ */
+html[dir="rtl"] .skip-link { left: auto; right: var(--sp-16); }
+
+html[dir="rtl"] .welcome-lang { right: auto; left: var(--sp-32); }
+html[dir="rtl"] .welcome-corner.tl { left: auto; right: 24px; border-width: 1px 1px 0 0; }
+html[dir="rtl"] .welcome-corner.br { right: auto; left: 24px; border-width: 0 0 1px 1px; }
+html[dir="rtl"] .welcome-btn svg { transform: scaleX(-1); }
+
+html[dir="rtl"] #drawer { left: auto; right: 0; border-right: none; border-left: 1px solid var(--color-stone); transform: translateX(100%); }
+html[dir="rtl"] #drawer.open { transform: translateX(0); }
+html[dir="rtl"] .drawer-link { text-align: right; }
+
+html[dir="rtl"] .nav-link.active::after { left: 12px; right: 12px; }
+
+html[dir="rtl"] .contact-arrow { transform: scaleX(-1); }
+html[dir="rtl"] .contact-card:hover .contact-arrow { transform: scaleX(-1) translateX(4px); }
+html[dir="rtl"] .contact-card:hover { transform: translateX(-4px); }
+
+html[dir="rtl"] .hero-grid { direction: rtl; }
+html[dir="rtl"] .about-grid { direction: rtl; }
+
+html[dir="rtl"] .lang-toggle { direction: ltr; }
+html[dir="rtl"] .drawer-lang { direction: ltr; justify-content: flex-end; }
+
+@media (max-width: 767px) {
+  html[dir="rtl"] .welcome-lang { left: 20px; right: auto; }
+}
