@@ -1,7 +1,6 @@
 # Fouad Dadache — Personal Portfolio
 
 Static HTML/CSS/JS — no build step, no Node.js, no dependencies.
-Trilingual: English, French, Arabic (with full RTL layout).
 
 ## Structure
 
@@ -9,25 +8,34 @@ Trilingual: English, French, Arabic (with full RTL layout).
 fouad-site/
 ├── index.html        ← Single HTML page
 ├── css/
-│   ├── tokens.css    ← Design tokens (colors, fonts, spacing) + RTL font rules
-│   └── layout.css    ← All component styles + responsive + RTL layout mirroring
+│   ├── tokens.css    ← Design tokens (colors, fonts, spacing)
+│   └── layout.css    ← All component styles + responsive
 ├── js/
-│   ├── data.js       ← All content in English, French & Arabic
-│   └── main.js       ← Rendering, animations, interactions, language persistence
+│   ├── data.js       ← All content in English & French
+│   └── main.js       ← Rendering, animations, interactions
 └── assets/           ← Put your photo here
 ```
 
-## Language / RTL Notes
+## Projects Section
 
-- Switching to Arabic sets `dir="rtl"` on `<html>` and swaps the font pairing
-  to Amiri (serif) + Noto Kufi Arabic (sans) — see `tokens.css`.
-- The chosen language is remembered via `localStorage` (`fd-lang`), so
-  returning visitors land back in the same language.
-- Email, phone number, and LinkedIn URL stay left-to-right even in RTL mode
-  (wrapped in `dir="ltr"`), since mixing direction on Latin strings inside an
-  RTL sentence breaks readability.
-- To edit Arabic content, edit `DATA.ar` in `js/data.js`. Name/location
-  overrides per language live in `DATA.personalByLang`.
+The "Projects" section (between Experience and Skills) shows a card linking to **ECONOVO** (econovo.is-cool.dev). Clicking the card — image or text — opens the site in a new tab.
+
+To add a real screenshot instead of the placeholder:
+1. Save a screenshot of econovo.is-cool.dev as `assets/econovo-preview.jpg`
+2. In `js/main.js`, find the `PROJECTS` render block and replace the `.project-thumb-placeholder` div with:
+```html
+<img src="assets/econovo-preview.jpg" alt="ECONOVO website preview" />
+```
+
+To add more projects later, just add another object to `projects.items` in `js/data.js` (both `en` and `fr`) — the grid and cards render automatically for each entry.
+
+## CV Download
+
+Two ready-made PDF CVs live in `assets/`:
+- `Fouad_Dadache_CV_EN.pdf` — English
+- `Fouad_Dadache_CV_FR.pdf` — French
+
+The "Download CV" button in the Hero and the Contact section automatically switches between them based on the selected site language (EN/FR toggle). To update the CV content, edit `js/data.js` → `contact.cvFile` per language, and replace the PDF file in `assets/` with the same name.
 
 ## Add Your Photo
 

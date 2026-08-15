@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fouad Dadache — Portfolio</title>
-  <meta name="description" content="Personal portfolio of Fouad Bahaeddin Dadache — Business Administration student, AI-assisted builder (vibe coding) and designer based in Algeria." />
+  <meta name="description" content="Personal portfolio of Fouad Bahaeddin Dadache — Business Administration student, co-founder of ECONOVO, digital creator and AI enthusiast." />
   <meta name="author" content="Fouad Bahaeddin Dadache" />
-  <meta name="theme-color" content="#f0eee6" />
   <meta property="og:title" content="Fouad Dadache — Portfolio" />
-  <meta property="og:description" content="Business Administration student, AI-assisted builder & designer based in Algeria." />
+  <meta property="og:description" content="Business Administration student & digital creator based in Algeria." />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:locale:alternate" content="fr_FR" />
-  <meta property="og:locale:alternate" content="ar_DZ" />
-  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23141413'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23f0eee6' font-family='Georgia,serif' font-size='14' font-weight='700'>FD</text></svg>" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/interactions.css" />
 </head>
 <body>
 
 <!-- ── Skip link ── -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ── Custom cursor (desktop only, added via JS body class) ── -->
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ── Scroll progress bar ── -->
+<div id="scroll-progress" aria-hidden="true"><div id="scroll-progress-fill"></div></div>
 
 <!-- ════════════════════════════════════════
      WELCOME SCREEN
@@ -35,16 +38,14 @@
     <button class="welcome-lang-btn active" data-lang="en">EN</button>
     <span style="color:var(--color-stone)">/</span>
     <button class="welcome-lang-btn" data-lang="fr">FR</button>
-    <span style="color:var(--color-stone)">/</span>
-    <button class="welcome-lang-btn" data-lang="ar">AR</button>
   </div>
 
   <!-- Content -->
   <div class="welcome-body">
-    <p class="welcome-name" id="welcome-name">Fouad Dadache</p>
+    <p class="welcome-name">Fouad Dadache</p>
     <h1 class="welcome-title" id="welcome-greeting">Welcome</h1>
     <p class="welcome-sub" id="welcome-sub">Glad you're here.</p>
-    <button class="welcome-btn" id="welcome-cta">
+    <button class="welcome-btn" id="welcome-cta" data-magnetic data-cursor="view">
       Enter Portfolio
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -64,6 +65,7 @@
       <nav class="nav-links" aria-label="Main navigation">
         <button class="nav-link" data-section="about"      id="nav-about">About</button>
         <button class="nav-link" data-section="experience" id="nav-experience">Experience</button>
+        <button class="nav-link" data-section="projects"   id="nav-projects">Projects</button>
         <button class="nav-link" data-section="skills"     id="nav-skills">Skills</button>
         <button class="nav-link" data-section="contact"    id="nav-contact">Contact</button>
       </nav>
@@ -73,8 +75,6 @@
           <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
           <span class="lang-sep" aria-hidden="true">/</span>
           <button class="lang-btn" data-lang="fr" aria-label="Passer en français">FR</button>
-          <span class="lang-sep" aria-hidden="true">/</span>
-          <button class="lang-btn" data-lang="ar" aria-label="التبديل إلى العربية">AR</button>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -95,6 +95,7 @@
     <div class="drawer-links">
       <button class="drawer-link" data-section="about"      id="dnav-about">About</button>
       <button class="drawer-link" data-section="experience" id="dnav-experience">Experience</button>
+      <button class="drawer-link" data-section="projects"   id="dnav-projects">Projects</button>
       <button class="drawer-link" data-section="skills"     id="dnav-skills">Skills</button>
       <button class="drawer-link" data-section="contact"    id="dnav-contact">Contact</button>
     </div>
@@ -103,7 +104,6 @@
       <div class="drawer-lang">
         <button class="drawer-lang-btn active" data-lang="en">English</button>
         <button class="drawer-lang-btn" data-lang="fr">Français</button>
-        <button class="drawer-lang-btn" data-lang="ar">العربية</button>
       </div>
     </div>
   </nav>
@@ -125,7 +125,7 @@
           <div class="hero-meta reveal hero-reveal">
             <span class="hero-meta-item">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span id="hero-location">Bordj Bou Arreridj, Algeria</span>
+              Bordj Bou Arreridj, Algeria
             </span>
             <span class="meta-sep" aria-hidden="true">·</span>
             <a href="mailto:Fbdadache@gmail.com" class="hero-meta-item hero-meta-link">
@@ -137,21 +137,26 @@
 
         <!-- Right -->
         <div class="hero-right">
-          <!-- Photo -->
-          <div class="hero-photo reveal hero-reveal">
-            <img src="assets/photo.jpg" alt="Fouad Dadache" />
+          <!-- Photo placeholder — replace with <img src="assets/photo.jpg" alt="Fouad Dadache"> -->
+          <div class="hero-photo reveal hero-reveal" id="hero-photo-tilt" aria-label="Profile photo">
+            <img src="assets/photo.jpg" alt="Fouad Bahaeddin Dadache" loading="eager" />
+            <div class="hero-photo-shine" aria-hidden="true"></div>
           </div>
 
           <p class="hero-sub reveal hero-reveal" id="hero-sub"></p>
 
           <div class="hero-actions reveal hero-reveal">
-            <a href="mailto:Fbdadache@gmail.com" class="btn-clay" id="btn-email-hero"></a>
-            <a href="https://www.linkedin.com/in/fouad-b-dadache-ab1907410" target="_blank" rel="noopener noreferrer" class="btn-outlined" id="btn-li-hero"></a>
+            <a href="assets/Fouad_Dadache_CV_EN.pdf" download class="btn-clay" id="btn-cv-hero" data-magnetic>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span id="btn-cv-hero-label">Download CV</span>
+            </a>
+            <a href="mailto:Fbdadache@gmail.com" class="btn-outlined" id="btn-email-hero" data-magnetic></a>
+            <a href="https://www.linkedin.com/in/fouad-b-dadache-ab1907410" target="_blank" rel="noopener noreferrer" class="btn-outlined" id="btn-li-hero" data-magnetic></a>
           </div>
         </div>
       </div>
 
-      <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down">
+      <button class="scroll-hint" id="scroll-hint" aria-label="Scroll down" data-magnetic>
         <span class="scroll-hint-arrow">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </span>
@@ -195,6 +200,16 @@
       </div>
     </div>
 
+    <!-- ── PROJECTS ── -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <span class="section-label reveal" id="projects-label">Projects</span>
+      <h2 class="section-title reveal" id="projects-title">Things I've launched.</h2>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- rendered by JS -->
+      </div>
+    </section>
+
     <!-- ── SKILLS ── -->
     <section id="skills" class="section" aria-labelledby="skills-title">
       <span class="section-label reveal" id="skills-label">Skills</span>
@@ -221,24 +236,35 @@
         <p class="contact-sub reveal" id="contact-sub">Available for remote or on-site opportunities.</p>
 
         <div class="contact-cards reveal">
-          <a href="mailto:Fbdadache@gmail.com" class="contact-card" id="contact-email-card">
+          <a href="assets/Fouad_Dadache_CV_EN.pdf" download class="contact-card" id="contact-cv-card" data-cursor="view">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <span class="contact-card-label" id="contact-cv-label">Download CV</span>
+              <span class="contact-card-value" id="contact-cv-value">PDF — English</span>
+            </div>
+            <span class="contact-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="mailto:Fbdadache@gmail.com" class="contact-card" id="contact-email-card" data-cursor="view">
             <div class="contact-card-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </div>
             <div class="contact-card-text">
               <span class="contact-card-label" id="contact-email-label">Send an email</span>
-              <span class="contact-card-value" dir="ltr">Fbdadache@gmail.com</span>
+              <span class="contact-card-value">Fbdadache@gmail.com</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
 
-          <a href="https://www.linkedin.com/in/fouad-b-dadache-ab1907410" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <a href="https://www.linkedin.com/in/fouad-b-dadache-ab1907410" target="_blank" rel="noopener noreferrer" class="contact-card" data-cursor="view">
             <div class="contact-card-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </div>
             <div class="contact-card-text">
               <span class="contact-card-label" id="contact-li-label">Connect on LinkedIn</span>
-              <span class="contact-card-value" dir="ltr">linkedin.com/in/fouad-b-dadache</span>
+              <span class="contact-card-value">linkedin.com/in/fouad-b-dadache</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
@@ -246,11 +272,11 @@
           <div class="contact-info">
             <span class="contact-info-item">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span id="contact-location">Bordj Bou Arreridj, Algeria</span>
+              Bordj Bou Arreridj, Algeria
             </span>
             <span class="contact-info-item">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.88-.88a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.92v1z"/></svg>
-              <span dir="ltr">0799647870</span>
+              0799647870
             </span>
           </div>
         </div>
@@ -274,5 +300,6 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/interactions.js"></script>
 </body>
 </html>
