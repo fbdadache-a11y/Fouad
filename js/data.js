@@ -8,6 +8,19 @@ const DATA = {
     linkedin: "https://www.linkedin.com/in/fouad-b-dadache-ab1907410",
   },
 
+  /* Per-language display overrides for fields that shouldn't be literally
+     translated (name order, location name, phone formatting). */
+  personalByLang: {
+    ar: {
+      name:     "فؤاد بهاء الدين دداش",
+      short:    "فؤاد دداش",
+      location: "برج بوعريريج، الجزائر",
+    },
+    fr: {
+      location: "Bordj Bou Arréridj, Algérie",
+    },
+  },
+
   en: {
     welcome: {
       greeting: "Welcome",
@@ -16,25 +29,25 @@ const DATA = {
     },
     nav: { about: "About", experience: "Experience", projects: "Projects", skills: "Skills", contact: "Contact" },
     hero: {
-      badge:    "Open to remote opportunities",
-      headline: ["Business student,", "community builder", "& digital creator."],
-      sub:      "Co-founder of ECONOVO, first-year Business Administration student at Mohamed El Bachir El Ibrahimi University. I bridge academic rigour with hands-on community leadership and digital storytelling.",
+      badge:    "Open to opportunities",
+      headline: ["Business student,", "AI-assisted builder", "& designer."],
+      sub:      "Second-year Business Administration student at Mohamed El Bachir El Ibrahimi University. I combine business fundamentals with vibe coding and design to turn ideas into working products — open to remote, on-site, or internship opportunities.",
       scroll:   "Scroll to explore",
     },
     about: {
       label: "About Me",
       title: "A student who builds while learning.",
-      bio1:  "I'm Fouad, a first-year Business Administration student at the University of Mohamed El Bachir El Ibrahimi in Bordj Bou Arreridj, Algeria. In December 2025, I co-founded ECONOVO — a student club that generated 4,500 organic views in a single day and brought together 39 participants at its inaugural event.",
-      bio2:  "My work sits at the intersection of administrative coordination, digital communication, and AI tools. I'm available for remote or on-site roles where I can apply my skills in content creation, community management, and organisational support.",
+      bio1:  "I'm Fouad, a second-year Business Administration student at the University of Mohamed El Bachir El Ibrahimi in Bordj Bou Arreridj, Algeria. My work blends business thinking with hands-on building — I use AI-assisted development (vibe coding) and design tools to ship real projects, not just plan them on paper.",
+      bio2:  "My path started with co-founding a student club, where I picked up community management and administrative coordination — and it's since grown into building websites and visual content with AI tools. I'm open to remote, on-site, or internship opportunities where I can apply this mix of business, design, and AI-assisted development.",
       stats: [
-        { value: "4 500+", label: "Organic views in 24 h",    icon: "trending-up" },
-        { value: "39",     label: "Event participants",        icon: "users" },
-        { value: "3",      label: "Languages spoken",          icon: "globe" },
+        { value: "2nd",  label: "Year, Business Administration", icon: "trending-up" },
+        { value: "1",    label: "Website built solo (ECONOVO)",  icon: "monitor" },
+        { value: "3",    label: "Languages spoken",              icon: "globe" },
       ],
       eduLabel: "Education",
       edu: [
         {
-          degree:  "Bachelor in Business Administration (1st year, Common Core)",
+          degree:  "Bachelor in Business Administration (2nd year)",
           inst:    "Université Mohamed El Bachir El Ibrahimi",
           loc:     "Bordj Bou Arreridj, Algeria",
           period:  "2025 — 2028",
@@ -49,20 +62,20 @@ const DATA = {
     },
     experience: {
       label: "Experience",
-      title: "What I've built so far.",
+      title: "Where I started building.",
       items: [
         {
-          role:   "Co-founder & Communication & Administration Manager",
+          role:   "Co-founder & Communication and Administration Manager",
           org:    "Student Club ECONOVO",
           loc:    "Université Mohamed El Bachir El Ibrahimi, BBA",
           period: "December 2025 — Present",
           bullets: [
-            "Planned and coordinated the club's launch event (December 2025), gathering 39 participants — managing full logistics, communication, and on-site welcome.",
+            "Designed and built the club's website solo — from layout to content, with no external help.",
+            "Planned and coordinated the club's launch event, gathering 39 participants — managing full logistics, communication, and on-site welcome.",
             "Created and published visual content on Facebook and Instagram that achieved 4,500 organic views in 24 hours — with zero advertising budget.",
             "Designed the complete visual identity of the club: logo, brand guidelines, posters, and presentation materials using Canva and PowerPoint.",
             "Drafted official correspondence addressed to the University Dean to obtain the necessary administrative authorisations.",
             "Set up a member database via Google Forms connected to Google Sheets, enabling automated tracking of 39+ registrants.",
-            "Coordinated with university administration for the validation and regular follow-up of club activities.",
           ],
         },
       ],
@@ -74,7 +87,7 @@ const DATA = {
         {
           name:    "ECONOVO",
           tag:     "Student Club Website",
-          desc:    "The official website of ECONOVO, the student club I co-founded — built to showcase the club's mission, activities, and events to the university community.",
+          desc:    "The official website of ECONOVO, the student club I co-founded — designed and built solo to showcase the club's mission, activities, and events to the university community.",
           url:     "https://econovo.is-cool.dev",
           urlLabel: "econovo.is-cool.dev",
           cta:     "Visit website",
@@ -85,11 +98,11 @@ const DATA = {
       label: "Skills",
       title: "Tools & capabilities.",
       cats: [
-        { name: "Office & Productivity",  icon: "monitor",      items: ["Microsoft Word", "PowerPoint", "Google Sheets", "Google Forms", "Google Drive"] },
-        { name: "Design & Content",        icon: "palette",      items: ["Canva", "Visual Identity", "Poster Creation", "Presentation Design"] },
-        { name: "Digital Marketing",       icon: "megaphone",    items: ["Facebook & Instagram", "Organic Content Strategy", "Community Management"] },
-        { name: "Artificial Intelligence", icon: "cpu",          items: ["ChatGPT", "Claude AI", "AI-assisted Research"] },
-        { name: "Administration",          icon: "clipboard",    items: ["Official Correspondence", "Document Management", "Event Coordination", "Database Management"] },
+        { name: "AI-Assisted Development", icon: "cpu",       items: ["Vibe Coding", "Claude AI", "ChatGPT", "AI-assisted Research"] },
+        { name: "Design & Content",        icon: "palette",   items: ["Canva", "Visual Identity", "Poster Creation", "Presentation Design"] },
+        { name: "Digital Marketing",       icon: "megaphone", items: ["Facebook & Instagram", "Organic Content Strategy", "Community Management"] },
+        { name: "Office & Productivity",   icon: "monitor",   items: ["Microsoft Word", "PowerPoint", "Google Sheets", "Google Forms", "Google Drive"] },
+        { name: "Administration",          icon: "clipboard", items: ["Official Correspondence", "Document Management", "Event Coordination", "Database Management"] },
       ],
       langLabel: "Languages",
       langs: [
@@ -101,7 +114,7 @@ const DATA = {
     contact: {
       label:    "Contact",
       title:    "Let's connect.",
-      sub:      "Available for remote or on-site opportunities.",
+      sub:      "Open to remote, on-site, or internship opportunities.",
       emailLbl: "Send an email",
       liLbl:    "Connect on LinkedIn",
       cvLbl:    "Download CV",
@@ -122,25 +135,25 @@ const DATA = {
     },
     nav: { about: "À propos", experience: "Expérience", projects: "Projets", skills: "Compétences", contact: "Contact" },
     hero: {
-      badge:    "Disponible en remote",
-      headline: ["Étudiant en gestion,", "bâtisseur de communauté", "& créateur digital."],
-      sub:      "Cofondateur d'ECONOVO, étudiant en 1ère année de Licence en Administration des Affaires à l'Université Mohamed El Bachir El Ibrahimi. Je conjugue rigueur académique, leadership communautaire et storytelling digital.",
+      badge:    "Ouvert aux opportunités",
+      headline: ["Étudiant en gestion,", "bâtisseur assisté par l'IA", "& designer."],
+      sub:      "Étudiant en 2ème année de Licence en Administration des Affaires à l'Université Mohamed El Bachir El Ibrahimi. Je combine les fondamentaux de la gestion avec le vibe coding et le design pour transformer des idées en produits concrets — ouvert au remote, au présentiel ou aux stages.",
       scroll:   "Défiler pour explorer",
     },
     about: {
       label: "À propos",
       title: "Un étudiant qui construit en apprenant.",
-      bio1:  "Je suis Fouad, étudiant en première année de Licence en Administration des Affaires à l'Université de Mohamed El Bachir El Ibrahimi à Bordj Bou Arreridj, Algérie. En décembre 2025, j'ai cofondé ECONOVO — un club étudiant qui a généré 4 500 vues organiques en une seule journée et rassemblé 39 participants lors de son événement inaugural.",
-      bio2:  "Mon travail se situe à l'intersection de la coordination administrative, de la communication digitale et des outils d'IA. Je suis disponible pour des postes à distance ou en présentiel où je peux appliquer mes compétences en création de contenu, gestion de communauté et soutien organisationnel.",
+      bio1:  "Je suis Fouad, étudiant en 2ème année de Licence en Administration des Affaires à l'Université de Mohamed El Bachir El Ibrahimi à Bordj Bou Arreridj, Algérie. Mon travail allie la réflexion business à la construction concrète — j'utilise le développement assisté par IA (vibe coding) et des outils de design pour livrer de vrais projets, pas seulement les planifier sur papier.",
+      bio2:  "Mon parcours a commencé par la cofondation d'un club étudiant, où j'ai appris la gestion de communauté et la coordination administrative — et s'est depuis étendu à la création de sites web et de contenus visuels avec des outils d'IA. Je suis ouvert à des opportunités à distance, en présentiel ou en stage où je peux appliquer ce mélange de gestion, design et développement assisté par IA.",
       stats: [
-        { value: "4 500+", label: "Vues organiques en 24 h",     icon: "trending-up" },
-        { value: "39",     label: "Participants à l'événement",   icon: "users" },
-        { value: "3",      label: "Langues parlées",              icon: "globe" },
+        { value: "2e",   label: "Année, Administration des Affaires", icon: "trending-up" },
+        { value: "1",    label: "Site web construit seul (ECONOVO)",  icon: "monitor" },
+        { value: "3",    label: "Langues parlées",                    icon: "globe" },
       ],
       eduLabel: "Formation",
       edu: [
         {
-          degree:  "Licence en Administration des Affaires (1ère année, Tronc Commun)",
+          degree:  "Licence en Administration des Affaires (2ème année)",
           inst:    "Université Mohamed El Bachir El Ibrahimi",
           loc:     "Bordj Bou Arreridj, Algérie",
           period:  "2025 — 2028",
@@ -155,7 +168,7 @@ const DATA = {
     },
     experience: {
       label: "Expérience",
-      title: "Ce que j'ai construit jusqu'ici.",
+      title: "Là où j'ai commencé à construire.",
       items: [
         {
           role:   "Cofondateur & Responsable Communication et Administration",
@@ -163,12 +176,12 @@ const DATA = {
           loc:    "Université Mohamed El Bachir El Ibrahimi, BBA",
           period: "Décembre 2025 — Présent",
           bullets: [
-            "Planifié et coordonné l'événement de lancement du club (décembre 2025) ayant réuni 39 participants, en gérant la logistique complète, la communication et l'accueil.",
+            "Conçu et développé seul le site web du club — de la mise en page au contenu, sans aide extérieure.",
+            "Planifié et coordonné l'événement de lancement du club ayant réuni 39 participants, en gérant la logistique complète, la communication et l'accueil.",
             "Créé et publié du contenu visuel sur Facebook et Instagram ayant généré 4 500 vues organiques en 24 heures — sans budget publicitaire.",
             "Conçu l'identité visuelle complète du club : logo, charte graphique, affiches, supports de présentation, via Canva et PowerPoint.",
             "Rédigé des correspondances officielles adressées au Doyen de l'université pour l'obtention des autorisations administratives nécessaires.",
             "Mis en place une base de données des membres via Google Forms connecté à Google Sheets, permettant un suivi automatisé de 39+ inscrits.",
-            "Assuré la coordination avec l'administration universitaire pour la validation et le suivi régulier des activités du club.",
           ],
         },
       ],
@@ -180,7 +193,7 @@ const DATA = {
         {
           name:    "ECONOVO",
           tag:     "Site du Club Étudiant",
-          desc:    "Le site officiel d'ECONOVO, le club étudiant que j'ai cofondé — conçu pour présenter la mission, les activités et les événements du club à la communauté universitaire.",
+          desc:    "Le site officiel d'ECONOVO, le club étudiant que j'ai cofondé — conçu et développé seul pour présenter la mission, les activités et les événements du club à la communauté universitaire.",
           url:     "https://econovo.is-cool.dev",
           urlLabel: "econovo.is-cool.dev",
           cta:     "Visiter le site",
@@ -191,10 +204,10 @@ const DATA = {
       label: "Compétences",
       title: "Outils & capacités.",
       cats: [
-        { name: "Bureautique & Productivité",    icon: "monitor",   items: ["Microsoft Word", "PowerPoint", "Google Sheets", "Google Forms", "Google Drive"] },
-        { name: "Design & Création de contenu",  icon: "palette",   items: ["Canva", "Identité visuelle", "Création d'affiches", "Supports de présentation"] },
+        { name: "Développement assisté par IA", icon: "cpu",       items: ["Vibe Coding", "Claude AI", "ChatGPT", "Recherche assistée par IA"] },
+        { name: "Design & Création de contenu", icon: "palette",   items: ["Canva", "Identité visuelle", "Création d'affiches", "Supports de présentation"] },
         { name: "Marketing Digital",             icon: "megaphone", items: ["Facebook & Instagram", "Stratégie de contenu organique", "Animation de communauté"] },
-        { name: "Intelligence Artificielle",     icon: "cpu",       items: ["ChatGPT", "Claude AI", "Recherche assistée par IA"] },
+        { name: "Bureautique & Productivité",    icon: "monitor",   items: ["Microsoft Word", "PowerPoint", "Google Sheets", "Google Forms", "Google Drive"] },
         { name: "Compétences administratives",   icon: "clipboard", items: ["Courriers officiels", "Gestion documentaire", "Coordination d'événements", "Bases de données"] },
       ],
       langLabel: "Langues",
@@ -207,7 +220,7 @@ const DATA = {
     contact: {
       label:    "Contact",
       title:    "Connectons-nous.",
-      sub:      "Disponible pour des opportunités à distance ou en présentiel.",
+      sub:      "Ouvert au remote, au présentiel ou aux stages.",
       emailLbl: "Envoyer un e-mail",
       liLbl:    "Se connecter sur LinkedIn",
       cvLbl:    "Télécharger le CV",
@@ -217,6 +230,112 @@ const DATA = {
     footer: {
       built:  "Conçu & développé par Fouad Dadache",
       rights: "Tous droits réservés.",
+    },
+  },
+
+  ar: {
+    welcome: {
+      greeting: "أهلاً بك",
+      sub:      "يسعدني وجودك هنا.",
+      cta:      "الدخول إلى الموقع",
+    },
+    nav: { about: "نبذة", experience: "الخبرة", projects: "المشاريع", skills: "المهارات", contact: "تواصل" },
+    hero: {
+      badge:    "متاح لأي فرصة مناسبة",
+      headline: ["طالب إدارة أعمال،", "وباني منتجات بمساعدة الذكاء الاصطناعي", "ومصمم."],
+      sub:      "طالب سنة ثانية إدارة أعمال بجامعة محمد البشير الإبراهيمي. أجمع بين أساسيات إدارة الأعمال وVibe Coding والتصميم لتحويل الأفكار إلى منتجات فعلية — متاح للعمل عن بُعد أو حضوريًا أو للتدريب.",
+      scroll:   "مرّر للأسفل لاستكشاف المزيد",
+    },
+    about: {
+      label: "نبذة عني",
+      title: "طالب يبني وهو يتعلّم.",
+      bio1:  "أنا فؤاد، طالب سنة ثانية إدارة أعمال بجامعة محمد البشير الإبراهيمي في برج بوعريريج، الجزائر. يجمع عملي بين التفكير الإداري والبناء الفعلي — أستخدم البرمجة بمساعدة الذكاء الاصطناعي (Vibe Coding) وأدوات التصميم لإنجاز مشاريع حقيقية، لا مجرد التخطيط لها على الورق.",
+      bio2:  "بدأت مساري بالمشاركة في تأسيس نادٍ طلابي، حيث اكتسبت مهارات إدارة المجتمعات والتنسيق الإداري — وتطور منذ ذلك الوقت ليشمل بناء المواقع والمحتوى البصري باستخدام أدوات الذكاء الاصطناعي. أنا متاح لفرص عمل عن بُعد أو حضورية أو تدريب أستطيع من خلالها توظيف هذا المزيج من إدارة الأعمال والتصميم والبرمجة بمساعدة الذكاء الاصطناعي.",
+      stats: [
+        { value: "الثانية", label: "سنة دراسية، إدارة أعمال",        icon: "trending-up" },
+        { value: "1",       label: "موقع ويب بنيته بمفردي (ECONOVO)", icon: "monitor" },
+        { value: "3",       label: "لغات يتحدث بها",                  icon: "globe" },
+      ],
+      eduLabel: "المسار الدراسي",
+      edu: [
+        {
+          degree:  "ليسانس في إدارة الأعمال (السنة الثانية)",
+          inst:    "جامعة محمد البشير الإبراهيمي",
+          loc:     "برج بوعريريج، الجزائر",
+          period:  "2025 — 2028",
+        },
+        {
+          degree:  "Claude AI 101 — شهادة في الذكاء الاصطناعي التطبيقي",
+          inst:    "Anthropic",
+          loc:     "عبر الإنترنت",
+          period:  "2025",
+        },
+      ],
+    },
+    experience: {
+      label: "الخبرة",
+      title: "من أين بدأت البناء.",
+      items: [
+        {
+          role:   "شريك مؤسس ومسؤول التواصل والإدارة",
+          org:    "نادي ECONOVO الطلابي",
+          loc:    "جامعة محمد البشير الإبراهيمي، برج بوعريريج",
+          period: "ديسمبر 2025 — إلى الآن",
+          bullets: [
+            "صممت وبنيت موقع النادي الإلكتروني بمفردي بالكامل — من التصميم إلى المحتوى، دون أي مساعدة خارجية.",
+            "خطّطت ونسّقت فعالية إطلاق النادي بحضور 39 مشاركًا، مع إدارة كاملة للّوجستيات والتواصل واستقبال الحضور.",
+            "أنشأت ونشرت محتوى بصريًا على فيسبوك وإنستغرام حقق 4500 مشاهدة عضوية خلال 24 ساعة — دون أي ميزانية إعلانية.",
+            "صممت الهوية البصرية الكاملة للنادي: الشعار، دليل العلامة، الملصقات، ومواد العرض باستخدام Canva وPowerPoint.",
+            "حررت مراسلات رسمية موجهة إلى عميد الجامعة للحصول على التصاريح الإدارية اللازمة.",
+            "أنشأت قاعدة بيانات للأعضاء عبر Google Forms مرتبطة بـ Google Sheets، مما مكّن من تتبع آلي لأكثر من 39 مسجَّلًا.",
+          ],
+        },
+      ],
+    },
+    projects: {
+      label: "المشاريع",
+      title: "ما أطلقته.",
+      items: [
+        {
+          name:    "ECONOVO",
+          tag:     "موقع النادي الطلابي",
+          desc:    "الموقع الرسمي لنادي ECONOVO الذي شاركت في تأسيسه — صممته وبنيته بمفردي لعرض رسالة النادي وأنشطته وفعالياته على المجتمع الجامعي.",
+          url:     "https://econovo.is-cool.dev",
+          urlLabel: "econovo.is-cool.dev",
+          cta:     "زيارة الموقع",
+        },
+      ],
+    },
+    skills: {
+      label: "المهارات",
+      title: "الأدوات والقدرات.",
+      cats: [
+        { name: "البرمجة بمساعدة الذكاء الاصطناعي", icon: "cpu",       items: ["Vibe Coding", "Claude AI", "ChatGPT", "البحث بمساعدة الذكاء الاصطناعي"] },
+        { name: "التصميم وصناعة المحتوى",           icon: "palette",   items: ["Canva", "الهوية البصرية", "تصميم الملصقات", "تصميم العروض"] },
+        { name: "التسويق الرقمي",                   icon: "megaphone", items: ["فيسبوك وإنستغرام", "استراتيجية المحتوى العضوي", "إدارة المجتمعات"] },
+        { name: "المكتبية والإنتاجية",               icon: "monitor",   items: ["Microsoft Word", "PowerPoint", "Google Sheets", "Google Forms", "Google Drive"] },
+        { name: "المهارات الإدارية",                 icon: "clipboard", items: ["المراسلات الرسمية", "إدارة الوثائق", "تنسيق الفعاليات", "إدارة قواعد البيانات"] },
+      ],
+      langLabel: "اللغات",
+      langs: [
+        { name: "العربية",    level: "اللغة الأم", pct: 100 },
+        { name: "الفرنسية",   level: "متوسط",      pct: 60 },
+        { name: "الإنجليزية", level: "متوسط",      pct: 60 },
+      ],
+    },
+    contact: {
+      label:    "تواصل",
+      title:    "لنبقَ على تواصل.",
+      sub:      "متاح لفرص عمل عن بُعد أو حضورية أو تدريب.",
+      emailLbl: "أرسل بريدًا إلكترونيًا",
+      liLbl:    "تواصل عبر LinkedIn",
+      cvLbl:    "تحميل السيرة الذاتية",
+      cvValue:  "PDF — إنجليزي",
+      cvFile:   "assets/Fouad_Dadache_CV_EN.pdf",
+    },
+    footer: {
+      built:  "صُمم وبُني بواسطة فؤاد دداش",
+      rights: "جميع الحقوق محفوظة.",
     },
   },
 };
