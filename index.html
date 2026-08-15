@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fouad Dadache — Portfolio</title>
-  <meta name="description" content="Personal portfolio of Fouad Bahaeddin Dadache — Business Administration student, co-founder of ECONOVO, digital creator and AI enthusiast." />
+  <meta name="description" content="Personal portfolio of Fouad Bahaeddin Dadache — Business Administration student, AI-assisted builder (vibe coding) and designer based in Algeria." />
   <meta name="author" content="Fouad Bahaeddin Dadache" />
+  <meta name="theme-color" content="#f1eae0" />
   <meta property="og:title" content="Fouad Dadache — Portfolio" />
-  <meta property="og:description" content="Business Administration student & digital creator based in Algeria." />
+  <meta property="og:description" content="Business Administration student, AI-assisted builder & designer based in Algeria." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23141413'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23f0eee6' font-family='Georgia,serif' font-size='14' font-weight='700'>FD</text></svg>" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_DZ" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23191511'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23f1eae0' font-family='Georgia,serif' font-size='14' font-weight='700'>FD</text></svg>" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/interactions.css" />
@@ -38,11 +43,13 @@
     <button class="welcome-lang-btn active" data-lang="en">EN</button>
     <span style="color:var(--color-stone)">/</span>
     <button class="welcome-lang-btn" data-lang="fr">FR</button>
+    <span style="color:var(--color-stone)">/</span>
+    <button class="welcome-lang-btn" data-lang="ar">AR</button>
   </div>
 
   <!-- Content -->
   <div class="welcome-body">
-    <p class="welcome-name">Fouad Dadache</p>
+    <p class="welcome-name" id="welcome-name">Fouad Dadache</p>
     <h1 class="welcome-title" id="welcome-greeting">Welcome</h1>
     <p class="welcome-sub" id="welcome-sub">Glad you're here.</p>
     <button class="welcome-btn" id="welcome-cta" data-magnetic data-cursor="view">
@@ -75,6 +82,8 @@
           <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
           <span class="lang-sep" aria-hidden="true">/</span>
           <button class="lang-btn" data-lang="fr" aria-label="Passer en français">FR</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button class="lang-btn" data-lang="ar" aria-label="التبديل إلى العربية">AR</button>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -104,6 +113,7 @@
       <div class="drawer-lang">
         <button class="drawer-lang-btn active" data-lang="en">English</button>
         <button class="drawer-lang-btn" data-lang="fr">Français</button>
+        <button class="drawer-lang-btn" data-lang="ar">العربية</button>
       </div>
     </div>
   </nav>
@@ -125,7 +135,7 @@
           <div class="hero-meta reveal hero-reveal">
             <span class="hero-meta-item">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Bordj Bou Arreridj, Algeria
+              <span id="hero-location">Bordj Bou Arreridj, Algeria</span>
             </span>
             <span class="meta-sep" aria-hidden="true">·</span>
             <a href="mailto:Fbdadache@gmail.com" class="hero-meta-item hero-meta-link">
@@ -137,9 +147,9 @@
 
         <!-- Right -->
         <div class="hero-right">
-          <!-- Photo placeholder — replace with <img src="assets/photo.jpg" alt="Fouad Dadache"> -->
-          <div class="hero-photo reveal hero-reveal" id="hero-photo-tilt" aria-label="Profile photo">
-            <img src="assets/photo.jpg" alt="Fouad Bahaeddin Dadache" loading="eager" />
+          <!-- Photo -->
+          <div class="hero-photo reveal hero-reveal" id="hero-photo-tilt">
+            <img src="assets/photo.jpg" alt="Fouad Dadache" loading="eager" />
             <div class="hero-photo-shine" aria-hidden="true"></div>
           </div>
 
@@ -242,7 +252,7 @@
             </div>
             <div class="contact-card-text">
               <span class="contact-card-label" id="contact-cv-label">Download CV</span>
-              <span class="contact-card-value" id="contact-cv-value">PDF — English</span>
+              <span class="contact-card-value" dir="ltr" id="contact-cv-value">PDF — English</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
@@ -253,7 +263,7 @@
             </div>
             <div class="contact-card-text">
               <span class="contact-card-label" id="contact-email-label">Send an email</span>
-              <span class="contact-card-value">Fbdadache@gmail.com</span>
+              <span class="contact-card-value" dir="ltr">Fbdadache@gmail.com</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
@@ -264,7 +274,7 @@
             </div>
             <div class="contact-card-text">
               <span class="contact-card-label" id="contact-li-label">Connect on LinkedIn</span>
-              <span class="contact-card-value">linkedin.com/in/fouad-b-dadache</span>
+              <span class="contact-card-value" dir="ltr">linkedin.com/in/fouad-b-dadache</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
@@ -272,11 +282,11 @@
           <div class="contact-info">
             <span class="contact-info-item">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Bordj Bou Arreridj, Algeria
+              <span id="contact-location">Bordj Bou Arreridj, Algeria</span>
             </span>
             <span class="contact-info-item">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.88-.88a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.92v1z"/></svg>
-              0799647870
+              <span dir="ltr">0799647870</span>
             </span>
           </div>
         </div>
