@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Amiri:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* ── Colors ── */
@@ -17,9 +17,6 @@
   /* ── Typography ── */
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
-  /* Arabic pairing: Amiri (serif, echoes Lora's role) + Noto Kufi Arabic (sans, echoes Inter's role) */
-  --font-serif-ar: 'Amiri', 'Noto Kufi Arabic', Tahoma, serif;
-  --font-sans-ar:  'Noto Kufi Arabic', Tahoma, sans-serif;
 
   /* ── Scale ── */
   --text-caption:    12px;
@@ -80,57 +77,4 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ══════════════════════════════════════
-   RTL (Arabic) SUPPORT
-   Swaps font families site-wide; layout.css handles
-   direction-aware spacing/alignment overrides.
-══════════════════════════════════════ */
-html[dir="rtl"] body { font-family: var(--font-serif-ar); }
-html[dir="rtl"] .nav-logo,
-html[dir="rtl"] .drawer-logo,
-html[dir="rtl"] .footer-logo,
-html[dir="rtl"] .nav-link,
-html[dir="rtl"] .drawer-link,
-html[dir="rtl"] .lang-toggle,
-html[dir="rtl"] .welcome-lang,
-html[dir="rtl"] .welcome-name,
-html[dir="rtl"] .welcome-sub,
-html[dir="rtl"] .welcome-btn,
-html[dir="rtl"] .hero-badge,
-html[dir="rtl"] .hero-headline,
-html[dir="rtl"] .hero-meta,
-html[dir="rtl"] .btn-clay,
-html[dir="rtl"] .btn-outlined,
-html[dir="rtl"] .scroll-hint,
-html[dir="rtl"] .section-label,
-html[dir="rtl"] .stat-value,
-html[dir="rtl"] .stat-label,
-html[dir="rtl"] .edu-period,
-html[dir="rtl"] .edu-location,
-html[dir="rtl"] .edu-inst,
-html[dir="rtl"] .exp-role,
-html[dir="rtl"] .exp-meta-item,
-html[dir="rtl"] .skill-name,
-html[dir="rtl"] .skill-item,
-html[dir="rtl"] .lang-name,
-html[dir="rtl"] .lang-level,
-html[dir="rtl"] .contact-card-label,
-html[dir="rtl"] .contact-info-item,
-html[dir="rtl"] .footer-tagline,
-html[dir="rtl"] .footer-copy,
-html[dir="rtl"] .drawer-lang-label,
-html[dir="rtl"] .drawer-lang-btn {
-  font-family: var(--font-sans-ar);
-}
-html[dir="rtl"] .welcome-title,
-html[dir="rtl"] .section-title,
-html[dir="rtl"] .about-bio,
-html[dir="rtl"] .contact-title,
-html[dir="rtl"] .contact-sub,
-html[dir="rtl"] .edu-degree,
-html[dir="rtl"] .exp-org,
-html[dir="rtl"] .exp-bullet {
-  font-family: var(--font-serif-ar);
 }
