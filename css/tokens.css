@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Amiri:ital@0;1&display=swap');
 
 :root {
-  /* ── Colors (linen palette) ── */
-  --pitch-black:    #191511;
-  --soft-linen:     #f1eae0;
-  --linen:          #f7eae0;
-  --soft-linen-2:   #efeae2;
-  --khaki-beige:    #bbab9c;
+  /* ── Colors (updated palette) ── */
+  --pitch-black:    #2E2E2E;   /* Charcoal Espresso */
+  --soft-linen:     #F1ECE6;   /* Alabaster Cream */
+  --linen:          #F1ECE6;   /* Alabaster Cream */
+  --soft-linen-2:   #DDD5CD;   /* Warm Greige */
+  --khaki-beige:    #DDD5CD;   /* Warm Greige */
 
   /* Derived tones — same family, different depth, so every surface still
-     reads as "linen" rather than reaching for an unrelated gray scale. */
-  --ink-soft:       #3a352e;   /* secondary text on light surfaces */
+     reads as one cohesive palette rather than reaching for an unrelated gray scale. */
+  --ink-soft:       #3a3a3a;   /* secondary text on light surfaces */
   --ink-faint:      #6b6459;   /* tertiary text / muted labels */
-  --linen-deep:     #e4d9c9;   /* darker linen — hover/active surfaces */
-  --linen-line:     #d8cbb8;   /* hairlines & borders on light surfaces */
-  --pitch-soft:     #2a251f;   /* dark surface, one step off pure black */
-  --pitch-line:     #423c33;   /* hairlines & borders on dark surfaces */
-  --khaki-on-linen: #736555;   /* khaki-beige darkened for AA text contrast on light surfaces — khaki-beige itself is decorative/dark-surface only */
+  --linen-deep:     #DDD5CD;   /* Warm Greige — hover/active surfaces */
+  --linen-line:     #cfc5ba;   /* hairlines & borders on light surfaces */
+  --pitch-soft:     #383838;   /* dark surface, one step off Charcoal Espresso */
+  --pitch-line:     #4a4a4a;   /* hairlines & borders on dark surfaces */
+  --khaki-on-linen: #6e6459;   /* Warm Greige darkened for AA text contrast on light surfaces */
 
-  /* Accent — a quiet oxblood, used the way the palette's warmth suggests:
+  /* Accent — Vintage Rosewood, used the way the palette's warmth suggests:
      sparingly, for the one or two things that must draw the eye. */
-  --accent:         #8a4433;
-  --accent-deep:    #723627;
-  --accent-soft:    #e8cfc3;   /* accent tint for subtle fills */
+  --accent:         #7D4047;
+  --accent-deep:    #63333A;
+  --accent-soft:    #e8d0d2;   /* accent tint for subtle fills */
 
   /* ── Semantic aliases (keep existing component code working) ── */
   --color-slate-dark:   var(--pitch-black);
