@@ -154,10 +154,9 @@ function render() {
     document.getElementById('projects-grid').innerHTML = t.projects.items.map(p => `
       <a class="project-card reveal" href="${p.url}" target="_blank" rel="noopener noreferrer" data-cursor="view" aria-label="${p.cta}: ${p.name}">
         <div class="project-thumb">
-          <div class="project-thumb-placeholder">
-            <span>${p.name}</span>
-            <span>${p.urlLabel}</span>
-          </div>
+          ${p.image
+            ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />`
+            : `<div class="project-thumb-placeholder"><span>${p.name}</span><span>${p.urlLabel}</span></div>`}
           <div class="project-thumb-overlay">
             <span class="project-visit">${ICONS.externalLink} ${p.cta}</span>
           </div>
